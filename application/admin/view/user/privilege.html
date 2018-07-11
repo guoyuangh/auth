@@ -1,0 +1,59 @@
+
+<article class="page-container" style="padding-top: 0;">
+    <form action="{{:url('admin/user/saveAuth',['id'=>$Request.param.id])}}" method="post" class="form form-horizontal" id="formMemberCreate">
+        <div class="row cl">
+            <div class="formControls col-xs-12 col-sm-12 skin-minimal">
+                {{volist name="rows" id="row"}}
+                <div class="radio-box">
+                    <input name="gid[]" type="checkbox" id="is_super-{{$key}}" value="{{$row.id}}" {{if in_array($row.id,$existsData)}}checked{{/if}}>
+                    <label for="is_super-{{$key}}">{{$row.group_name}}</label>
+                </div>
+                {{/volist}}
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" style="width: 50%">
+            </div>
+        </div>
+    </form>
+</article>
+    {{include file="common/validate" /}}
+<script type="text/javascript">
+    $(function(){
+        $('.skin-minimal input').iCheck({
+            checkboxClass: 'icheckbox-blue',
+            radioClass: 'iradio-blue',
+            increaseArea: '20%'
+        });
+
+        $("#formMemberCreate").validate({
+            rules:{},
+            onkeyup:false,
+            focusCleanup:true,
+            success:"valid",
+            submitHandler:function(form){
+                $("input[type='submit']").attr('disabled',true);
+                $(form).ajaxSubmit({
+                    success:function (res) {
+                        if(res.status == 1){
+                            layer.closeAll('page');
+                            layer.msg(
+                                res.msg, {
+                                    icon:1,
+                                    shade:0.1,
+                                    closeBtn:2,
+                                    end:function () {
+                                        window.location.reload();
+                                    }
+                                });
+                        }else{
+                            layer.msg(res.msg,{icon:2,shade:0.2,closeBtn:2});
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+

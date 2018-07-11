@@ -1,0 +1,111 @@
+{{block name="appendCss"}}
+<link href="http://cdn.bootcss.com/iCheck/1.0.2/skins/all.css" rel="stylesheet">
+{{/block}}
+{{block name="appendJs"}}
+<script type="text/javascript" src="/static/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script src="/static/admin/js/layer.js"></script>
+<script>
+    $(function () {
+        $("#createAuthRule,.edit").click(function () {
+            showPageHtml($(this));
+        });
+        $(".delete").click(function () {
+            var that = $(this);
+            layer.confirm('确认要删除吗?',{icon:1,shade:[0.3, '#FFFFFF']},function (index) {
+                $.ajax({
+                    url:that.data('href'),
+                    type:"get",
+                    dataType:"JSON",
+                    beforeSend:function () {
+                        layer.load(2,{shade:[0.2, '#FFFFFF']});
+                    },
+                    success:function (res) {
+                        layer.closeAll('loading');
+                        if(res.status == 1){
+                            that.parents('tr').remove();
+                            layer.msg(res.msg,{icon:1,shade:[0.2, '#FFFFFF']});
+                        }else{
+                            layer.msg(res.msg,{icon:2,shade:[0.2, '#FFFFFF']});
+                        }
+                    }
+                });
+                layer.close(index);
+            });
+        });
+
+        $("#batchBtn").click(function () {
+            layer.confirm('确认要执行批量删除吗?',{icon:1,shade:[0.3, '#FFFFFF']},function (index) {
+                $("#batchForm").ajaxSubmit({
+                    success:function (res) {
+                        if(res.status == 1){
+                            layer.msg(res.msg,{icon:1,closeBtn:2,shade:0.2, end:function () {
+                                    window.location.reload();
+                                }});
+                        }else{
+                            layer.msg(res.msg,{icon:2,closeBtn:2,shade:0.2});
+                        }
+                    }
+                });
+                layer.close(index);
+            });
+        });
+    });
+</script>
+
+<script>
+    $("input[type='checkbox']").iCheck({
+        checkboxClass: 'icheckbox_flat-red',
+        radioClass: 'iradio_flat-red'
+    })
+
+    $("input.batch").on("ifChecked",function(){
+        $("input[type='checkbox']").iCheck("check");
+    }).on("ifUnchecked",function(){
+        $("input[type='checkbox']").iCheck("uncheck");
+    });
+</script>
+{{/block}}
+
+{{extend name="common/layout" /}}
+{{block name="content"}}
+<nav class="breadcrumb">
+    <i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 权限管理 <span class="c-gray en">&gt;</span>
+    规则列表 <a class="btn btn-success radius r replace" id="replace" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+
+    <div class="cl pd-5 bg-1 bk-gray">
+        <span class="l">
+             {{if AuthCheck('admin/AuthRule/delete')}}
+            <a href="javascript:;" id="batchBtn" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+            {{/if}}
+            {{if AuthCheck('admin/AuthRule/create')}}
+            <a href="javascript:;" id="createAuthRule" data-width="600" data-height="380" data-href="{{:url('admin/AuthRule/create')}}" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加规则</a>
+            {{/if}}
+        </span>
+
+    </div>
+    <div class="mt-20">
+        <form action="{{:url('admin/AuthRule/batch')}}" id="batchForm">
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+            <tr class="text-c">
+                <th width="25"><input class="batch" type="checkbox"></th>
+                <th width="100">规则名称</th>
+                <th width="100">规则节点</th>
+                <th width="50">是否菜单</th>
+                <th width="50">菜单图标</th>
+                <th width="50">菜单路由</th>
+                <th width="80">添加时间</th>
+                <th width="80">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{volist name="rows" id="row"}}
+            <tr class="text-c"><td><input type="checkbox" value="{{$row.id}}" name="id[]"></td><td class="text-l">{{:str_repeat('&nbsp;', $row['level']*4)}}{{:str_repeat("<span class='c-red mr-5'>├</span>", $row['level'])}}{{$row.rule_name}}</td><td>{{$row.rule_node}}</td><td>{{$row.is_menu}}</td><td>{{$row.menu_ico}}</td><td>{{if !empty($row.menu_route)}}{{:url($row.menu_route)}}{{else}} 空 {{/if}}</td><td>{{$row.create_time|date="Y/m/d H:i:s"}}</td><td class="td-manage">{{if AuthCheck('admin/AuthRule/edit')}}<a href="javascript:;"  data-width="600" data-height="380" class="btn btn-success-outline size-MINI radius edit" data-href="{{:url('admin/AuthRule/edit',['id'=>$row.id])}}"><i class="Hui-iconfont">&#xe631;</i> 编辑</a>{{/if}}{{if AuthCheck('admin/AuthRule/delete')}}<a href="javascript:;" class="btn btn-danger-outline size-MINI radius delete" data-href="{{:url('admin/AuthRule/delete',['id'=>$row.id])}}"><i class="Hui-iconfont">&#xe6e2;</i> 删除</a>{{/if}}</td></tr>
+            {{/volist}}
+            </tbody>
+        </table>
+        </form>
+    </div>
+</div>
+{{/block}}

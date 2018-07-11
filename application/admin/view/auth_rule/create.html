@@ -1,0 +1,133 @@
+<article class="page-container" style="padding-top: 0;">
+    <form action="{{:url('admin/AuthRule/save')}}" method="post" class="form form-horizontal" id="formSave">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>所属规则：</label>
+            <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+				<select name="pid" class="select">
+					<option value="0">顶级规则</option>
+                    {{volist name="rows" id="row"}}
+					<option value="{{$row.id}}" {{if $row.level >=3}}disabled="disabled"{{/if}} >{{:str_repeat("├", $row['level'])}}{{$row.rule_name}}</option>
+					{{/volist}}
+				</select>
+				</span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>规则名称：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" placeholder="规则名称"  name="rule_name">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>规则节点：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea name="rule_node"  placeholder="规则节点" class="textarea"></textarea>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>是否为菜单：</label>
+            <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                <div class="radio-box">
+                    <input name="is_menu" type="radio" id="is_menu-1" checked value="0">
+                    <label for="is_menu-1">否</label>
+                </div>
+                <div class="radio-box">
+                    <input name="is_menu" type="radio" id="is_menu-2" value="1">
+                    <label for="is_menu-2">是</label>
+                </div>
+            </div>
+        </div>
+        <div id="menu" style="display: none;">
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>菜单名称：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" placeholder="菜单名称"  name="menu_name">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>菜单路由：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" placeholder="菜单路由"  name="menu_route">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>菜单图标：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" placeholder="菜单图标"  name="menu_ico">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>排序：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" placeholder="排序"  name="sort" value="0">
+                </div>
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-7 col-sm-7 col-xs-offset-4 col-sm-offset-3">
+                <input class="btn btn-primary radius btn-block" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;" >
+            </div>
+        </div>
+    </form>
+</article>
+    {{include file="common/validate" /}}
+<script type="text/javascript">
+    $(function(){
+        $('.skin-minimal input').iCheck({
+            checkboxClass: 'icheckbox-blue',
+            radioClass: 'iradio-blue',
+            increaseArea: '20%'
+        }).on("ifChecked",function () {
+            var menu = $("#menu");
+            if($(this).val() == 1){
+                menu.show().parents(".layui-layer-content").height("500").parents(".layui-layer-page").css({
+                    "height":"545px",
+                    "top":"25%"
+                });
+            }else{
+                menu.hide().parents(".layui-layer-content").height("337").parents(".layui-layer-page").height("380");
+            }
+        });
+
+        $("#formSave").validate({
+            rules:{
+                pid:{required:true},
+                rule_name:{required:true,maxlength:30},
+                rule_node:{required:true,maxlength:300},
+                is_menu:{required:true},
+                menu_name:{maxlength:20},
+                menu_ico:{maxlength:20},
+                sort:{maxlength:20},
+            },
+            onkeyup:false,
+            focusCleanup:true,
+            success:"valid",
+            submitHandler:function(form){
+                $("input[type='submit']").attr('disabled',true);
+                $(form).ajaxSubmit({
+                    success:function (res) {
+                        if(res.status == 1){
+                            layer.closeAll('page');
+                            layer.msg(
+                                res.msg, {
+                                    icon:1,
+                                    shade:0.1,
+                                    closeBtn:2,
+                                    end:function () {
+                                        window.location.reload();
+                                    }
+                                });
+                        }else{
+                            layer.msg(res.msg,{icon:2,shade:0.2,closeBtn:2});
+                        }
+                    },
+                    complete: function () {
+                        $("input[type='submit']").attr('disabled',false);
+                        layer.closeAll('loading');
+                    }
+                });
+            }
+        });
+    });
+</script>
+

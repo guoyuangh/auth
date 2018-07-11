@@ -1,0 +1,97 @@
+<article class="page-container" style="padding-top:0">
+    <form action="{{:url('admin/AuthGroup/saveAuth',['id'=>$Request.param.id])}}" method="post" class="form form-horizontal" id="formSubmit">
+        <div class="row cl">
+            <div class="formControls col-xs-12 col-sm-12">
+                {{volist name="rules" id="rule"}}
+                <dl class="permission-list">
+                    <dt><label  data-title="{{$rule.rule_name}}"><input type="checkbox" {{if in_array($rule.id,$existsData)}}checked{{/if}} value="{{$rule.id}}" name="rid[]" id="user-Character-0">{{$rule.rule_name}}</label></dt>
+                    {{if isset($rule.children)}}
+                    <dd>
+                    {{volist name="rule.children" id="childRule"}}
+                        <dl class="cl permission-list2">
+                            <dt>
+                                <label  data-title="{{$childRule.rule_name}}"><input type="checkbox" {{if in_array($childRule.id,$existsData)}}checked{{/if}} value="{{$childRule.id}}" name="rid[]" id="user-Character-0-1">{{:mb_substr($childRule.rule_name,0,5)}}</label>
+                            </dt>
+                                {{if isset($childRule.children)}}
+                            <dd>
+                                {{volist name="childRule.children" id="childRulemenu"}}
+                                <label data-title="{{$childRulemenu.rule_name}}"><input type="checkbox" {{if in_array($childRulemenu.id,$existsData)}}checked{{/if}} value="{{$childRulemenu.id}}" name="rid[]" id="user-Character-0-1-0">{{:mb_substr($childRulemenu.rule_name,0,5)}}</label>
+                                {{if $i%6 ==0}}<br>{{/if}}
+                                {{/volist}}
+                            </dd>
+                            {{/if}}
+                        </dl>
+                        {{/volist}}
+                    </dd>
+                    {{/if}}
+                </dl>
+                {{/volist}}
+            </div>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-6 col-xs-offset-4 col-sm-offset-3">
+                <button type="submit" class="btn btn-success radius btn-block" id="admin-role-save" name="admin-role-save"><i class="icon-ok"></i> 确定</button>
+            </div>
+        </div>
+    </form>
+</article>
+{{include file="common/validate" /}}
+<script>
+    $(function () {
+
+        // $("label").mouseover(function () {
+        //     layer.tips($(this).data('title'), $(this));
+        // });
+
+        $(".permission-list dt input:checkbox").click(function(){
+            $(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
+        });
+        $(".permission-list2 dd input:checkbox").click(function(){
+            var l =$(this).parent().parent().find("input:checked").length;
+            var l2=$(this).parents(".permission-list").find(".permission-list2 dd").find("input:checked").length;
+            if($(this).prop("checked")){
+                $(this).closest("dl").find("dt input:checkbox").prop("checked",true);
+                $(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",true);
+            }
+            else{
+                if(l==0){
+                    $(this).closest("dl").find("dt input:checkbox").prop("checked",false);
+                }
+                if(l2==0){
+                    $(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",false);
+                }
+            }
+        });
+
+        $("#formSubmit").validate({
+            rules:{
+                "rid[]":{required:true}
+            },
+            submitHandler:function (form) {
+                $(form).ajaxSubmit({
+                    beforeSend:function () {
+                        layer.load(2,{shade:[0.2, '#FFFFFF']});
+                    },
+                    success:function (res) {
+                        layer.closeAll('loading');
+                        layer.closeAll('page');
+
+                        if(res.status == 1){
+                            layer.msg(
+                                res.msg, {
+                                    icon:1,
+                                    shade:0.1,
+                                    closeBtn:2,
+                                    end:function () {
+                                        window.location.reload();
+                                    }
+                                });
+                        }else{
+                            layer.msg(res.msg,{icon:2,shade:0.2,closeBtn:2});
+                        }
+                    }
+                });
+            }
+        });
+    })
+</script>
