@@ -8,7 +8,7 @@ php版本 >= 7.0  因为里面使用了只有PHP7支持的 ?? ?: 语法
 对于代码有不合理的地方希望大家提出来!
 
 ## 参与开发
-Emil:haotian0607@gmail.com
+Email:haotian0607@gmail.com
 
 交流QQ群: 814270669
 加群连接:<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=68670d406ff42150f78000829448ebf700c3a92617025155f9864366c3d04654">点击加入</a>
