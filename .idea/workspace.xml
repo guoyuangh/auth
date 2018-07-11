@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a84028c7-225b-4ea9-b45c-4f4e040e86ba" name="Default" comment="" />
+    <list default="true" id="a84028c7-225b-4ea9-b45c-4f4e040e86ba" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/queue.md" beforeDir="false" afterPath="$PROJECT_DIR$/queue.md" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,12 +61,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="queuq.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/queuq.md">
+      <file leaf-file-name="queue.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/queue.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="182">
-                <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="64" />
+              <first_editor relative-caret-position="78">
+                <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
               </first_editor>
               <second_editor />
             </state>
@@ -73,7 +77,9 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor />
+              <first_editor>
+                <caret column="5" selection-start-column="5" selection-end-column="5" />
+              </first_editor>
               <second_editor />
             </state>
           </provider>
@@ -140,7 +146,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/static/admin/h-ui/css/H-ui.css" />
         <option value="$PROJECT_DIR$/application/common/model/AuthGroup.php" />
         <option value="$PROJECT_DIR$/application/common/model/AuthGroupUser.php" />
         <option value="$PROJECT_DIR$/application/common/model/AuthGroupRule.php" />
@@ -190,6 +195,7 @@
         <option value="$PROJECT_DIR$/application/admin/view/auth_group/index.html" />
         <option value="$PROJECT_DIR$/application/admin/view/user/index.html" />
         <option value="$PROJECT_DIR$/queuq.md" />
+        <option value="$PROJECT_DIR$/queue.md" />
         <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
@@ -235,43 +241,6 @@
               <item name="fm" type="b2602c69:ProjectViewProjectNode" />
               <item name="fm" type="462c0819:PsiDirectoryNode" />
               <item name="application" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fm" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fm" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fm" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="auth_group" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fm" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="auth_rule" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="fm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="fm" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -321,12 +290,12 @@
       <updated>1531083001468</updated>
       <workItem from="1531083003191" duration="64271000" />
       <workItem from="1531245926594" duration="8827000" />
-      <workItem from="1531266058799" duration="3352000" />
+      <workItem from="1531266058799" duration="4076000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76450000" />
+    <option name="totallyTimeSpent" value="77174000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -736,11 +705,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/queuq.md">
+    <entry file="file://$PROJECT_DIR$/queue.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="182">
-            <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="64" />
+          <first_editor relative-caret-position="78">
+            <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
           </first_editor>
           <second_editor />
         </state>
@@ -749,7 +718,9 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor />
+          <first_editor>
+            <caret column="5" selection-start-column="5" selection-end-column="5" />
+          </first_editor>
           <second_editor />
         </state>
       </provider>
