@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a84028c7-225b-4ea9-b45c-4f4e040e86ba" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/fm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/controller/Main.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/controller/Main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/common/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/common/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/admin/view/main/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/admin/view/main/welcome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/tags.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/tags.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -126,8 +119,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="747">
-                <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+              <first_editor relative-caret-position="124">
+                <caret line="4" selection-start-line="4" selection-end-line="4" />
               </first_editor>
               <second_editor />
             </state>
@@ -350,12 +343,12 @@
       <workItem from="1531321803267" duration="442000" />
       <workItem from="1531327309508" duration="29424000" />
       <workItem from="1531398236789" duration="1320000" />
-      <workItem from="1531403866045" duration="314000" />
+      <workItem from="1531403866045" duration="668000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115403000" />
+    <option name="totallyTimeSpent" value="115757000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -370,7 +363,7 @@
     <frame x="0" y="23" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.17784877" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.17784877" />
       <window_info anchor="bottom" id="TODO" order="11" weight="0.32960325" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5005325" side_tool="true" weight="0.32960325" />
@@ -379,7 +372,7 @@
       <window_info anchor="bottom" id="Version Control" order="4" />
       <window_info anchor="bottom" id="Run" order="7" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.49946752" weight="0.35198373" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="3" sideWeight="0.49946752" visible="true" weight="0.37843338" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
@@ -750,8 +743,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="747">
-            <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+          <first_editor relative-caret-position="124">
+            <caret line="4" selection-start-line="4" selection-end-line="4" />
           </first_editor>
           <second_editor />
         </state>
