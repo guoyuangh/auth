@@ -12,11 +12,11 @@
 // 应用行为扩展定义文件
 return [
     // 应用初始化
-    'app_init'     => [],
-    // 应用开始
-    'app_begin'    => [
-//        'app\\behavior\\checkAuth'
+    'app_init'     => [
+        'app\\api\\behavior\\CORS'
     ],
+    // 应用开始
+    'app_begin'    => [],
     // 模块初始化
     'module_init'  => [],
     // 操作开始执行

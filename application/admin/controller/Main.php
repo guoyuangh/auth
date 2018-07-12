@@ -40,7 +40,7 @@ class Main extends Base
      */
     public function welcome()
     {
-        list($start, $end) = Time::today();
+        list($start, $end) = Time::week();
         $logRows = (new LoginLogmodel())->where('uid', parent::$uid)->whereBetweenTime('create_time',$start,$end)->order('create_time', 'desc')->paginate(10);
         return $this->fetch('welcome', [
             'logRows' => $logRows,
