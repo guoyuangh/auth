@@ -40,8 +40,11 @@ class Main extends Base
      */
     public function welcome()
     {
-        list($start, $end) = Time::week();
-        $logRows = (new LoginLogmodel())->where('uid', parent::$uid)->whereBetweenTime('create_time',$start,$end)->order('create_time', 'desc')->paginate(10);
+        $beginWeek = mktime(0,0,0,date("m"),date("d")-date("w")+1,date("Y"));
+        $endWeek = mktime(23,59,59,date("m"),date("d")-date("w")+7,date("Y"));
+
+        $logRows = (new LoginLogmodel())->where('uid', parent::$uid)->whereBetweenTime('create_time',$beginWeek,$endWeek)->order('create_time', 'desc')->paginate(10);
+
         return $this->fetch('welcome', [
             'logRows' => $logRows,
             'userData' => parent::getUserdata(),
