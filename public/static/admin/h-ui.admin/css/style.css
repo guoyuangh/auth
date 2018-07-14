@@ -1,0 +1,8 @@
+@charset "utf-8";
+nav.breadcrumb a.replace {
+    line-height: 1.6em;
+    margin-top: 3px
+}
+select{
+    background: none;
+}
