@@ -14,7 +14,6 @@ use app\tool\Tree;
 use auth\Auth;
 use think\facade\Cache;
 use think\facade\Session;
-use think\helper\Time;
 
 class Main extends Base
 {
