@@ -31,12 +31,12 @@ Email:haotian0607@gmail.com
 ### 更新记录
 ##### 2018/07/12
     修复在用户列表分页样式错乱问题
-    增加后台CORS跨域请求
-    修复后台登录记录本该是可以查看本周的,结果只显示当前的
+    增加CORS跨域请求
+    修复后台登录记录本该是可以查看本周的,结果只显示当天的
     
 ##### 2018/07/15
     重新提交代码,因为之前提交的时候居然没有将css js提交上去 对此深感抱歉;
-    提交vendor代码 如果下载之后在您机器上出现问题请将vendor目录删除执行下面的命令
+    提交vendor目录下类库 如果下载之后在您机器上出现问题请将vendor目录清空并执行下面的命令
     
         安装验证码类库: composer require topthink/think-captcha
         安装时间戳操作类库: composer require topthink/think-helper
